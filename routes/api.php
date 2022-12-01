@@ -39,7 +39,8 @@ Route::post('/webhook', function (Request $request) use ($bot) {
 
     collect($events)->each(function ($event) use ($bot) {
         if ($event instanceof TextMessage) {
-            return $bot->replyText($event->getReplyToken(), $event->getText());
+            $message = $event->getText() . "なんだよね結局。";
+            return $bot->replyText($event->getReplyToken(), $message);
         }
     });
 
